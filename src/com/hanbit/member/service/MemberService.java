@@ -10,7 +10,7 @@ public interface MemberService {
 	public int countMembers();
 	public MemberBean findById(String id);
 	public List<MemberBean> findByNames(String name);
-	public void updatePw(MemberBean member);
-	public void deleteId(String id);
+	public void modify(MemberBean member);
+	public void remove(String id);
 	//MemberBean[] list=new MemberBean[4];
 }

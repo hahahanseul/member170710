@@ -51,11 +51,11 @@ public class MemberController {
 				member.setPw(newPassword);
 				member.setName(newName);
 				member.setSsn(newSsn);
-				service.updatePw(member);
+				service.modify(member);
 				JOptionPane.showMessageDialog(null, "수정완료");
 				break flag;
 			case DEL:
-				service.deleteId(JOptionPane.showInputDialog("삭제할 아이디를 입력하세요"));
+				service.remove(JOptionPane.showInputDialog("삭제할 아이디를 입력하세요"));
 				JOptionPane.showMessageDialog(null, "삭제완료");
 				break flag;
 			}
