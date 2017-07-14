@@ -18,33 +18,21 @@ public class MemberServiceImpl implements MemberService {
 	} // i는 처음 입력받은 회원수, 총 회원수는 count에 담겨서 그 숫자만큼 MemberBean의 공간이 생성됨
 
 	@Override
-	public void addMember(MemberBean member) {
-		map.put(member.getId(), member);
+	public String addMember(MemberBean member) {
+		return (new MemberDAOImpl().insert(member)==1)?"등록성공":"실패";
 	}
 	
 	@Override
 	public List<MemberBean> getMembers() {
-		List<MemberBean> list = new ArrayList<>();
-		Set<String> keys = map.keySet();
-		for(String s: keys) {
-			list.add(map.get(s));
-		}
-		return list;
+		return new MemberDAOImpl().selectAll();
 	}
 	@Override
 	public int countMembers() {
-		return map.size();
+		return new MemberDAOImpl().countMembers();
 	}
 	@Override
 	public List<MemberBean> findByNames(String name) {
-		List<MemberBean> temp = new ArrayList<>();
-		Set<String> keys = map.keySet();
-		for(String s: keys) {
-			if(name.equals(map.get(s).getName())) {
-				temp.add(map.get(s));
-			}
-		}
-		return temp;
+		return new MemberDAOImpl().selectByNames(name);
 	}
 	@Override
 	public MemberBean findById(String id) {
@@ -55,7 +43,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void modify(MemberBean param) {
+	public String modify(MemberBean param) {
+		String msg="";
 			if(!param.getName().equals("")) {
 				map.get(param.getId()).setName(param.getName());
 			}
@@ -65,9 +54,13 @@ public class MemberServiceImpl implements MemberService {
 			if(!param.getSsn().equals("")) {
 				map.get(param.getSsn()).setSsn(param.getSsn());
 			}
+		return msg;	
 	}
 	@Override
-	public void remove(String id) {
+	public String remove(String id) {
+		String msg="";
 		map.remove(id);
+		return msg;
+		
 	}
 }

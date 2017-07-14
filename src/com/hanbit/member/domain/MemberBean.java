@@ -52,8 +52,12 @@ public void setSsn(String ssn) {
 }
 
 
+@Override
 public String toString() {
-	   return "MemberBean [id=" + id + ", pw=" + pw + ", ssn=" + ssn + ", name=" + name + "]\n";
-   }
+	return "MemberBean [id=" + id + ", pw=" + pw + ", name=" + name + ", ssn=" + ssn + ", regdate=" + regdate + "]"+"\n";
+}
+
+
+
    
 }

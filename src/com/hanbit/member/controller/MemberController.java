@@ -25,8 +25,7 @@ public class MemberController {
 				member.setId(arr[1]);
 				member.setPw(arr[2]);
 				member.setSsn(arr[3]);
-				service.addMember(member);
-				JOptionPane.showMessageDialog(null, "회원가입 성공");			
+				JOptionPane.showMessageDialog(null, service.addMember(member));			
 				break flag;
 			case COUNT:
 				JOptionPane.showMessageDialog(null, service.countMembers());
